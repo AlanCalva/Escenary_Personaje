@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
-import { VRButton } from 'three/addons/webxr/VRBUTTON.js';
+import { VRButton } from 'three/addons/webxr/VRButton.js';
 
 let camera, scene, renderer, controls, mixer;
 const clock = new THREE.Clock();
