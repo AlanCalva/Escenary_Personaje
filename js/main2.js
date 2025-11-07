@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { Octree } from 'three/addons/math/Octree.js';
 import { OctreeHelper } from 'three/addons/helpers/OctreeHelper.js';
 import { Capsule } from 'three/addons/math/Capsule.js';
-import { VRButton } from 'three/addons/webxr/VRButton2.js';
+import { VRButton } from 'three/addons/webxr/VRBUTTON2.js';
 
 // =====================
 // Escena, cámara y base
