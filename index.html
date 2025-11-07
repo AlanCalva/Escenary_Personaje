@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Visor 3D – Selector de Apps</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    /* Menú principal */
+    #menu {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+      z-index: 10;
+    }
+
+    .btn-app {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-app:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0,114,255,0.6);
+    }
+
+    /* Contenedor del iframe */
+    #viewer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100vh;
+      display: none;
+      border: none;
+    }
+
+    /* Botón para volver o cambiar */
+    #switchBtn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      border: 1px solid #555;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Menú de inicio -->
+  <div id="menu">
+    <h1>Selecciona una aplicación</h1>
+    <button id="btnPersonaje" class="btn-app">🕺 App 1 – Personaje Mixamo</button>
+    <button id="btnEscenario" class="btn-app">🌆 App 2 – Escenario 3D</button>
+  </div>
+
+  <!-- Contenedor del visor -->
+  <iframe id="viewer"></iframe>
+  <button id="switchBtn">🔄 Cambiar de aplicación</button>
+
+  <script>
+    const menu = document.getElementById('menu');
+    const viewer = document.getElementById('viewer');
+    const switchBtn = document.getElementById('switchBtn');
+
+    let currentApp = null;
+
+    // Función para cargar una app dentro del iframe
+    function loadApp(app) {
+      if (app === 'personaje') {
+        viewer.src = 'index_personaje.html'; // tu archivo actual del personaje
+      } else if (app === 'escenario') {
+        viewer.src = 'index_escenary.html'; // tu archivo actual del escenario
+      }
+
+      currentApp = app;
+      menu.style.display = 'none';
+      viewer.style.display = 'block';
+      switchBtn.style.display = 'block';
+    }
+
+    // Eventos
+    document.getElementById('btnPersonaje').addEventListener('click', () => loadApp('personaje'));
+    document.getElementById('btnEscenario').addEventListener('click', () => loadApp('escenario'));
+
+    switchBtn.addEventListener('click', () => {
+      if (currentApp === 'personaje') {
+        loadApp('escenario');
+      } else {
+        loadApp('personaje');
+      }
+    });
+  </script>
+</body>
+</html>
